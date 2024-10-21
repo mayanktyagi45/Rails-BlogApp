@@ -16,7 +16,7 @@ class BlogPostsController < ApplicationController
   end
 
   def create
-    @blog_post = BlogPost.new(params[blog_post_params])
+    @blog_post = BlogPost.new(blog_post_params)
     if @blog_post.save
       redirect_to @blog_post
     else
@@ -43,7 +43,7 @@ class BlogPostsController < ApplicationController
   private
   
   def blog_post_params
-    params.require(:blog_post).permit(:title, :body)
+    params.require(:blog_post).permit(:title, :body, :category)
   end
 
   def set_blog_post
